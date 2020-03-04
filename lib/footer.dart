@@ -21,7 +21,7 @@ class _Footer extends State {
   /* MaterialクラスをラッパーにしてBoxDecoration:gradientを適用したContainerを親にしたり
      SizedBox()やStack()を親にしてWidgetを重ねてみたりしてみたが、いずれの方法も
      BottomNavigationBarItemをバラバラに囲んで背景をグラデーションにすることは叶わず
-     BottomNavigationBarを使わずRow, Column, Containerの組み合わせで作った方が早そう
+     BottomNavigationBarを使わずContainerとRowを組み合わせてメニュー自作した方が早そう
    */
   @override
   Widget build(BuildContext context) {

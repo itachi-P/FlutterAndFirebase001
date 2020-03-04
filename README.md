@@ -1,12 +1,11 @@
-# katachi_hp_01
+# task03 (The first app development in cooperation with Flutter and Firebase.)
 
-Making clone of miraino-katachi&#x27;s HP.
+Making clone of miraino-katachi HP(http://miraino-katachi.co.jp/).
+
+About this repository:
+First, the katachi_hp_01 directory of the FlutterStudy03 repository was copied as it was to create a new repository.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
