@@ -2,15 +2,20 @@
 
 Application development that imitates the miraino-katachi homepage.
 
+About this repository:
+  - Copied FlutterStudy03/katachi_hp_01 and created a new repository.
+  - Link with Firebase.
+  - Reads and writes data using Firebase as a database.
+  - ~Implement the user login function using Firebase.~ -> (Using FirebaseAuth from the beginning.)
+
+Cosideration:
+  - Implement social login using FirebaseAuth.
+  - Implement push notifications using Firebase cloud messaging.
+  - Use Dynamic Link to automatically open the app if the app is installed, otherwise automatically open the web.
+  - Other additional functions.
+
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [online documentation](https://flutter.dev/docs)
