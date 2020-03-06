@@ -5,7 +5,7 @@ Application development that imitates the miraino-katachi homepage.
 About this repository:
   - Copied FlutterStudy03/katachi_hp_01 and created a new repository.
   - Link with Firebase.
-  - Reads and writes data using Firebase as a database.
+  - Reads and writes data using Firebase Cloud Firestore.
   - Use Firebase storage (like AWS S3).
   - ~Implement the user login function using Firebase.~ -> (Using FirebaseAuth from the beginning.)
 

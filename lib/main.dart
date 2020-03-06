@@ -1,42 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'another.dart';
 import 'contact.dart';
 import 'footer.dart';
 import 'header.dart';
 import 'login.dart';
 import 'right_menu.dart';
-import 'teachers.dart';
-
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _State();
-  }
-}
+//import 'another.dart';
 
 void main() {
   debugPaintSizeEnabled = true;
-  runApp(
-    MaterialApp(
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       //home: MyApp(),
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => MyApp(),
-        '/home': (BuildContext context) => Another(),
         '/contact_page': (BuildContext context) => Contact(),
         '/login': (BuildContext context) => Login(),
         '/right_menu': (BuildContext context) => RightMenu(),
+        //'/teachers': (BuildContext context) => Teachers(),
       },
-    ),
-  );
+      title: 'task03 connect firestore',
+      home: KatachiHomePage(),
+    );
+  }
 }
 
-class _State extends State<MyApp> {
-  //var _selected = '';
+class KatachiHomePage extends StatefulWidget {
+  @override
+  _KatachiHomePage createState() {
+    return _KatachiHomePage();
+  }
+}
 
+class _KatachiHomePage extends State<KatachiHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
