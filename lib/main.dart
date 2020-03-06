@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'another.dart';
 import 'contact.dart';
 import 'footer.dart';
 import 'header.dart';
 import 'login.dart';
 import 'right_menu.dart';
-
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _State();
-  }
-}
+import 'teachers.dart';
 
 void main() {
   debugPaintSizeEnabled = true;
-  runApp(
-    MaterialApp(
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
       //home: MyApp(),
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => MyApp(),
-        '/home': (BuildContext context) => Another(),
         '/contact_page': (BuildContext context) => Contact(),
         '/login': (BuildContext context) => Login(),
         '/right_menu': (BuildContext context) => RightMenu(),
+        '/teachers': (BuildContext context) => Teachers(),
       },
-    ),
-  );
+      title: 'task03 connect firestore',
+      home: KatachiHomePage(),
+    );
+  }
 }
 
-class _State extends State<MyApp> {
-  //var _selected = '';
+class KatachiHomePage extends StatefulWidget {
+  @override
+  _KatachiHomePage createState() {
+    return _KatachiHomePage();
+  }
+}
 
+class _KatachiHomePage extends State<KatachiHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +111,13 @@ class _State extends State<MyApp> {
                 padding: EdgeInsets.all(8.0),
                 splashColor: Colors.greenAccent,
                 onPressed: () {
-                  print("Pushed lecturer introduction button");
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Teachers();
+                      },
+                    ),
+                  );
                 },
                 child: Text(
                   '講師紹介',
