@@ -14,8 +14,4 @@ Cosideration:
   - Use Dynamic Link to automatically open the app if the app is installed, otherwise automatically open the web.
   - Other additional functions.
 
-## Getting Started
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-- [online documentation](https://flutter.dev/docs)
+[codelabs - babyname](https://codelabs.developers.google.com/codelabs/flutter-firebase/)

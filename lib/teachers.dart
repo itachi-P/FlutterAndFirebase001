@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'teachers_update.dart';
+
 class Teachers extends StatefulWidget {
   @override
   _TeachersState createState() {
@@ -14,6 +16,22 @@ class _TeachersState extends State<Teachers> {
     return Scaffold(
       appBar: AppBar(title: Text('Katachi Teachers')),
       body: _buildBody(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // できれば画面遷移せずに追加登録・削除できるUIにしたい
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) {
+                return TeachersUpdate();
+              },
+            ),
+          );
+        },
+        tooltip: 'Teachers Add',
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
