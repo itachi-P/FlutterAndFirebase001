@@ -7,6 +7,7 @@ import 'footer.dart';
 import 'header.dart';
 import 'login.dart';
 import 'right_menu.dart';
+import 'teachers.dart';
 
 class MyApp extends StatefulWidget {
   @override

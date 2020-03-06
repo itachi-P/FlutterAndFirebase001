@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "478357973664",
+    "firebase_url": "https://katachi-hp.firebaseio.com",
+    "project_id": "katachi-hp",
+    "storage_bucket": "katachi-hp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478357973664:android:3bd6efd9e9612a9955f7c5",
+        "android_client_info": {
+          "package_name": "com.itachip.task03fb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478357973664-l8cvpgqd3ad9h2oe663smbekonm1bcbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKpBjBWvAq49h4DVTOgfsWQ4yXp26PrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478357973664-l8cvpgqd3ad9h2oe663smbekonm1bcbp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "478357973664-4cipki29jelg6h2qon5mkaqb0ben7efb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.itachip.task03fb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
