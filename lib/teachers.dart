@@ -47,6 +47,8 @@ class _TeachersState extends State<Teachers> {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: ListTile(
+          leading: Text("講師"),
+          subtitle: Text(record.document_id),
           title: Text(record.full_name),
           trailing: Text(record.specialty),
           //onTap: () => record.reference.updateData({}),
@@ -57,13 +59,16 @@ class _TeachersState extends State<Teachers> {
 }
 
 class Record {
+  final String document_id;
   final String full_name;
   final String specialty;
   final DocumentReference reference;
 
   Record.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['full_name'] != null),
+      : assert(reference.documentID != null),
+        assert(map['full_name'] != null),
         assert(map['specialty'] != null),
+        document_id = reference.documentID,
         full_name = map['full_name'],
         specialty = map['specialty'];
 
