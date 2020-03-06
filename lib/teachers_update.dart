@@ -8,8 +8,8 @@ class TeachersUpdate extends StatefulWidget {
   }
 }
 
-void setData(String collection, Map data) {
-  Firestore.instance.collection(collection).document().setData(data);
+void setData(String collection, String documentID, Map data) {
+  Firestore.instance.collection(collection).document(documentID).setData(data);
 }
 
 class _TeachersUpdateState extends State<TeachersUpdate> {
@@ -37,11 +37,12 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
                 onPressed: () {
                   // TODO
                   //dummy
+                  String documentID = "yamada";
                   Map<String, dynamic> data = {
                     "full_name": "山田太郎",
                     "specialty": "Cobol/Elixir/Haskell",
                   };
-                  setData('teachers', data);
+                  setData('teachers', documentID, data);
                 },
                 child: Text(
                   '追加',
