@@ -1,4 +1,4 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class TeachersUpdate extends StatefulWidget {
@@ -6,6 +6,10 @@ class TeachersUpdate extends StatefulWidget {
   _TeachersUpdateState createState() {
     return _TeachersUpdateState();
   }
+}
+
+void setData(String collection, Map data) {
+  Firestore.instance.collection(collection).document().setData(data);
 }
 
 class _TeachersUpdateState extends State<TeachersUpdate> {
@@ -32,7 +36,12 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
                 splashColor: Colors.blueGrey,
                 onPressed: () {
                   // TODO
-                  print("講師追加イベント");
+                  //dummy
+                  Map<String, dynamic> data = {
+                    "full_name": "山田太郎",
+                    "specialty": "Cobol/Elixir/Haskell",
+                  };
+                  setData('teachers', data);
                 },
                 child: Text(
                   '追加',
