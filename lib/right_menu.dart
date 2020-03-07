@@ -20,7 +20,7 @@ class RightMenu extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.popAndPushNamed(context, '/home');
+                        Navigator.popAndPushNamed(context, '/');
                       },
                       child: Text(
                         'HOME',
@@ -54,6 +54,19 @@ class RightMenu extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.popAndPushNamed(context, '/test_input_forms');
+                      },
+                      child: Text(
+                        'Test Page',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.purpleAccent,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold),
                       ),
                     ),

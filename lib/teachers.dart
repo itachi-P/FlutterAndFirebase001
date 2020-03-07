@@ -5,12 +5,15 @@ import 'teachers_update.dart';
 
 class Teachers extends StatefulWidget {
   @override
-  _TeachersState createState() {
-    return _TeachersState();
+  State<StatefulWidget> createState() {
+    return _State();
   }
 }
 
-class _TeachersState extends State<Teachers> {
+class _State extends State<Teachers> {
+  var _selectedMenu = 'modify';
+  var _popupMenuContent = ["modify", "delete"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,11 +68,43 @@ class _TeachersState extends State<Teachers> {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: ListTile(
-          leading: Text("講師"),
-          subtitle: Text(record.document_id),
+          leading: Text(record.document_id),
           title: Text(record.full_name),
-          trailing: Text(record.specialty),
-          //onTap: () => record.reference.updateData({}),
+          subtitle: Text(record.specialty),
+          trailing: PopupMenuButton<String>(
+            initialValue: _selectedMenu,
+            onSelected: (String selected) {
+              setState(() {
+                _selectedMenu = selected;
+                if (_selectedMenu == "modify") {
+                  // TODO 3.下記をデータ修正(=値入り新規登録画面)への遷移に改修
+                  record.reference.updateData(
+                      {'specialty': record.specialty.toUpperCase()});
+                  // TODO 2.下記を画面遷移無しで当該データ削除に改修
+                } else if (_selectedMenu == "delete") {
+                  record.reference.updateData(
+                      {'specialty': record.specialty.toLowerCase()});
+                }
+              });
+            },
+            tooltip: 'メニューを表示します',
+            itemBuilder: (BuildContext context) {
+              return _popupMenuContent.map((String menuContent) {
+                var menuLavel = menuContent;
+                if (menuContent == "modify") {
+                  menuLavel = "修正";
+                } else if (menuContent == "delete") {
+                  menuLavel = "削除";
+                }
+                return PopupMenuItem(
+                  child: Text(menuLavel),
+                  value: menuContent,
+                  height: 30.0,
+                );
+              }).toList();
+            },
+          ),
+          //onTap: () => record.reference.updateData({'votes': record.votes + 1}),
         ),
       ),
     );

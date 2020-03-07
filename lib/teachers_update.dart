@@ -8,6 +8,7 @@ class TeachersUpdate extends StatefulWidget {
   }
 }
 
+// documentIDを指定しない場合はFirestore側で自動的に一意なIDが生成される。
 void setData(String collection, String documentID, Map data) {
   Firestore.instance.collection(collection).document(documentID).setData(data);
 }
@@ -23,8 +24,33 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
             Container(
               width: 380,
               height: 140.0,
-              padding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-              child: Text("ここに入力フォームを並べる"),
+              padding: EdgeInsets.fromLTRB(8.0, 15.0, 8.0, 0),
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    decoration: new InputDecoration(
+                      labelText: "Enter Email",
+                      fillColor: Colors.greenAccent,
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(25.0),
+                        borderSide: new BorderSide(),
+                      ),
+                      //fillColor: Colors.green
+                    ),
+                    validator: (val) {
+                      if (val.length == 0) {
+                        return "Email cannot be empty";
+                      } else {
+                        return null;
+                      }
+                    },
+                    keyboardType: TextInputType.emailAddress,
+                    style: new TextStyle(
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                ],
+              ),
             ),
             Container(
               child: FlatButton(
@@ -37,10 +63,10 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
                 onPressed: () {
                   // TODO
                   //dummy
-                  String documentID = "yamada";
+                  String documentID = "moheji";
                   Map<String, dynamic> data = {
-                    "full_name": "山田太郎",
-                    "specialty": "Cobol/Elixir/Haskell",
+                    "full_name": "屁野 茂平次",
+                    "specialty": "Cobol/C#/Go",
                   };
                   setData('teachers', documentID, data);
                 },

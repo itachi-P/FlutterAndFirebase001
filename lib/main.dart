@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:task03fb/test_input_forms.dart';
 
 import 'contact.dart';
 import 'footer.dart';
@@ -9,7 +10,7 @@ import 'right_menu.dart';
 import 'teachers.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  //debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 
@@ -18,12 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: MyApp(),
       routes: <String, WidgetBuilder>{
         '/contact_page': (BuildContext context) => Contact(),
         '/login': (BuildContext context) => Login(),
         '/right_menu': (BuildContext context) => RightMenu(),
         '/teachers': (BuildContext context) => Teachers(),
+        '/test_input_forms': (BuildContext context) => TestInputForm(),
       },
       title: 'task03 connect firestore',
       home: KatachiHomePage(),
