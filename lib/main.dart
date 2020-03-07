@@ -9,7 +9,7 @@ import 'right_menu.dart';
 import 'teachers.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  //debugPaintSizeEnabled = true;
   runApp(MyApp());
 }
 

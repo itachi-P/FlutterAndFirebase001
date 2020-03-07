@@ -24,7 +24,9 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
               width: 380,
               height: 140.0,
               padding: EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-              child: Text("ここに入力フォームを並べる"),
+              child: Column(
+                children: <Widget>[],
+              ),
             ),
             Container(
               child: FlatButton(

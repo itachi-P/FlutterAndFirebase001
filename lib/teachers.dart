@@ -10,12 +10,16 @@ class Teachers extends StatefulWidget {
   }
 }
 
+// This is the type used by the popup menu below.
+enum RowMenu { update, delete }
+
 class _TeachersState extends State<Teachers> {
+  var _selection;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Katachi Teachers')),
-      body: _buildBody(context),
+      body: _buildBody(context, _selection),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // できれば画面遷移せずに追加登録・削除できるUIにしたい
@@ -35,25 +39,29 @@ class _TeachersState extends State<Teachers> {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context, var _selection) {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('teachers').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
 
-        return _buildList(context, snapshot.data.documents);
+        return _buildList(context, snapshot.data.documents, _selection);
       },
     );
   }
 
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
+  Widget _buildList(
+      BuildContext context, List<DocumentSnapshot> snapshot, var _selection) {
     return ListView(
       padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
+      children: snapshot
+          .map((data) => _buildListItem(context, data, _selection))
+          .toList(),
     );
   }
 
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
+  Widget _buildListItem(
+      BuildContext context, DocumentSnapshot data, var _selection) {
     final record = Record.fromSnapshot(data);
 
     return Padding(
@@ -66,9 +74,29 @@ class _TeachersState extends State<Teachers> {
         ),
         child: ListTile(
           leading: Text("講師"),
-          subtitle: Text(record.document_id),
-          title: Text(record.full_name),
-          trailing: Text(record.specialty),
+          title: Text("${record.document_id} ${record.full_name}"),
+          subtitle: Text(record.specialty),
+          trailing: PopupMenuButton<RowMenu>(
+            onSelected: (RowMenu result) {
+              setState(() {
+                _selection = result;
+              });
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<RowMenu>>[
+              const PopupMenuItem<RowMenu>(
+                value: RowMenu.update,
+                child: Text('更新'),
+              ),
+              const PopupMenuItem<RowMenu>(
+                value: RowMenu.delete,
+                child: Text('削除'),
+              ),
+            ],
+            tooltip: "Modify or Delete the data in this row.",
+            enabled: true,
+            //initialValue: RowMenu.update,
+            elevation: 15.0, // Controls the size of the shadow below the menu
+          ),
           //onTap: () => record.reference.updateData({}),
         ),
       ),
