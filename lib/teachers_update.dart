@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TeachersUpdate extends StatefulWidget {
   @override
@@ -56,15 +57,19 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
                     autofocus: true,
                     autocorrect: true, // ?
                     controller: _documentIdController,
+                    inputFormatters: <TextInputFormatter>[
+                      WhitelistingTextInputFormatter(
+                        RegExp(r'[a-z0-9]'),
+                      )
+                    ],
                     maxLength: 20,
                     autovalidate: true,
                     decoration: InputDecoration(
                       icon: Icon(Icons.book),
-                      labelText:
-                          "Please enter the teacher's nickname in lowercase letters.",
+                      labelText: "半角英数小文字で入力してください。",
                       errorStyle:
                           TextStyle(fontSize: 15.0, color: Colors.deepOrange),
-                      hintText: "Teachers documentID",
+                      hintText: "講師のニックネーム",
                       fillColor: Colors.greenAccent,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
@@ -195,6 +200,10 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
         // 年齢フォームからフォーカスを外し、キーボードをしまう
         ageFocus.unfocus();
       },
+      // 入力可能文字を数字に制限する
+      inputFormatters: <TextInputFormatter>[
+        WhitelistingTextInputFormatter.digitsOnly,
+      ],
       validator: (value) {
         // 年齢が１６歳以上であるか確認
         if (value.length == 0 || int.parse(value) < 16) {
@@ -207,7 +216,7 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
       decoration: InputDecoration(
         labelText: "年齢を入力してください。",
         hintText: '講師の年齢（１６歳以上）',
-        icon: Icon(Icons.person_outline),
+        icon: Icon(Icons.face),
         fillColor: Colors.white,
       ),
       onSaved: (value) {
