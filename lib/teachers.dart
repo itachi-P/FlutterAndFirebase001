@@ -80,24 +80,22 @@ class _State extends State<Teachers> {
                   // TODO 3.下記をデータ修正(=値入り新規登録画面)への遷移に改修
                   record.reference.updateData(
                       {'specialty': record.specialty.toUpperCase()});
-                  // TODO 2.下記を画面遷移無しで当該データ削除に改修
                 } else if (_selectedMenu == "delete") {
-                  record.reference.updateData(
-                      {'specialty': record.specialty.toLowerCase()});
+                  deleteData('teachers', record.document_id);
                 }
               });
             },
             tooltip: 'メニューを表示します',
             itemBuilder: (BuildContext context) {
               return _popupMenuContent.map((String menuContent) {
-                var menuLavel = menuContent;
+                var menuLabel = menuContent;
                 if (menuContent == "modify") {
-                  menuLavel = "修正";
+                  menuLabel = "修正";
                 } else if (menuContent == "delete") {
-                  menuLavel = "削除";
+                  menuLabel = "削除";
                 }
                 return PopupMenuItem(
-                  child: Text(menuLavel),
+                  child: Text(menuLabel),
                   value: menuContent,
                   height: 30.0,
                 );
@@ -115,6 +113,7 @@ class Record {
   final String document_id;
   final String full_name;
   final String specialty;
+  //final int age;
   final DocumentReference reference;
 
   Record.fromMap(Map<String, dynamic> map, {this.reference})
@@ -127,8 +126,8 @@ class Record {
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
-/*
-  @override
-  String toString() => "Record<$full_name:$number>;
-   */
+}
+
+void deleteData(String collection, String documentId) {
+  Firestore.instance.collection(collection).document(documentId).delete();
 }
