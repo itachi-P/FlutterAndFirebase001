@@ -8,7 +8,7 @@ class TestInputForm extends StatelessWidget {
     }
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: "Welcome to Flutter",
       home: Material(
         child: Container(
@@ -25,8 +25,8 @@ class TestInputForm extends StatelessWidget {
               Padding(padding: EdgeInsets.only(top: 50.0)),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: "Enter Email",
-                  fillColor: Colors.white,
+                  labelText: "Enter full name.",
+                  fillColor: Colors.red,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25.0),
                     borderSide: BorderSide(),
@@ -40,10 +40,6 @@ class TestInputForm extends StatelessWidget {
                     return null;
                   }
                 },
-                keyboardType: TextInputType.number,
-                style: TextStyle(
-                  fontFamily: "Poppins",
-                ),
               ),
             ])),
           ),

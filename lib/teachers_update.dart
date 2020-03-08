@@ -14,6 +14,12 @@ void setData(String collection, String documentID, Map data) {
 }
 
 class _TeachersUpdateState extends State<TeachersUpdate> {
+  //final _formKey = GlobalKey<FormState>();
+
+  String _documentId = "";
+  String _full_name = "";
+  String _specialty = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,38 +29,79 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
           children: <Widget>[
             Container(
               width: 380,
-              height: 140.0,
+              height: 280.0,
               padding: EdgeInsets.fromLTRB(8.0, 15.0, 8.0, 0),
               child: Column(
                 children: <Widget>[
                   TextFormField(
-                    decoration: new InputDecoration(
-                      labelText: "Enter Email",
+                    maxLength: 20,
+                    autovalidate: true,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.book),
+                      labelText:
+                          "Please enter the teacher's nickname in lowercase letters.",
+                      hintText: "Teachers documentID",
                       fillColor: Colors.greenAccent,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                        borderSide: new BorderSide(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(),
                       ),
                       //fillColor: Colors.green
                     ),
-                    validator: (val) {
-                      if (val.length == 0) {
-                        return "Email cannot be empty";
-                      } else {
-                        return null;
-                      }
+                    validator: (String value) {
+                      return value.isEmpty ? '必須入力です。' : null;
                     },
-                    keyboardType: TextInputType.emailAddress,
-                    style: new TextStyle(
-                      fontFamily: "Poppins",
+                    onSaved: (String value) {
+                      this._documentId = value;
+                    },
+                  ),
+                  TextFormField(
+                    maxLength: 20,
+                    maxLengthEnforced: false,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.person),
+                      labelText: "Enter Teacher's full name.",
+                      hintText: "Teachers full name",
+                      fillColor: Colors.greenAccent,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(),
+                      ),
+                      //fillColor: Colors.green
                     ),
+                    validator: (String value) {
+                      return value.isEmpty ? '必須入力です。' : null;
+                    },
+                    onSaved: (String value) {
+                      this._full_name = value;
+                    },
+                  ),
+                  TextFormField(
+                    maxLength: 30,
+                    maxLengthEnforced: true,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.star),
+                      labelText: "Enter Teacher's specialty.",
+                      fillColor: Colors.greenAccent,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(),
+                      ),
+                      //fillColor: Colors.green
+                    ),
+                    validator: (String value) {
+                      return value.isEmpty ? '必須入力です。' : null;
+                    },
+                    onSaved: (String value) {
+                      this._specialty = value;
+                    },
                   ),
                 ],
               ),
             ),
             Container(
               child: FlatButton(
-                color: Colors.white,
+                color: Colors.blueGrey,
                 textColor: Colors.black,
                 disabledColor: Colors.blueGrey, // ?
                 disabledTextColor: Colors.pink, // ?
@@ -63,10 +110,10 @@ class _TeachersUpdateState extends State<TeachersUpdate> {
                 onPressed: () {
                   // TODO
                   //dummy
-                  String documentID = "moheji";
+                  String documentID = "abc";
                   Map<String, dynamic> data = {
-                    "full_name": "屁野 茂平次",
-                    "specialty": "Cobol/C#/Go",
+                    "full_name": _full_name,
+                    "specialty": _specialty,
                   };
                   setData('teachers', documentID, data);
                 },
