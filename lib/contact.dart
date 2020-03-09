@@ -52,7 +52,7 @@ class Contact extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.pushNamed(context, '/home');
+                Navigator.pushNamed(context, '/another');
               },
             ),
           ],
