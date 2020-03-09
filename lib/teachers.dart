@@ -78,8 +78,7 @@ class _State extends State<Teachers> {
                 _selectedMenu = selected;
                 if (_selectedMenu == "modify") {
                   // TODO 3.下記をデータ修正(=値入り新規登録画面)への遷移に改修
-                  record.reference.updateData(
-                      {'specialty': record.specialty.toUpperCase()});
+                  updateData('teachers', data);
                 } else if (_selectedMenu == "delete") {
                   deleteData('teachers', record.document_id);
                 }
@@ -128,6 +127,16 @@ class Record {
       : this.fromMap(snapshot.data, reference: snapshot.reference);
 }
 
-void deleteData(String collection, String documentId) {
-  Firestore.instance.collection(collection).document(documentId).delete();
+void deleteData(String collectionName, String documentId) {
+  Firestore.instance.collection(collectionName).document(documentId).delete();
+}
+
+// このメソッドを以下のように変更する。
+// データを更新するロジック自体は遷移先の画面(teachers_update)の中で別メソッドとして用意
+// 選択（タップ）した行のドキュメントIDを含むデータを「講師追加登録」画面に渡して遷移
+// 前のページから受け取った該当行のデータを講師追加登録用の各フォームに初期値として入れる
+void updateData(String collectionName, DocumentSnapshot documentSnapshot) {
+  //Firestore.instance.collection(collectionName).document(documentSnapshot.documentID).get();
+  Map record = documentSnapshot.data;
+  print(record);
 }
