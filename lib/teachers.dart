@@ -11,8 +11,8 @@ class Teachers extends StatefulWidget {
 }
 
 class _State extends State<Teachers> {
-  var _selectedMenu = 'modify';
-  var _popupMenuContent = ["modify", "delete"];
+  var _selectedMenu = '';
+  final _popupMenuContent = ["modify", "delete"];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _State extends State<Teachers> {
       body: _buildBody(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // できれば画面遷移せずに追加登録・削除できるUIにしたい
+          // 削除機能は画面遷移せずに完結するUIに
           Navigator.push(
             context,
             MaterialPageRoute<void>(
