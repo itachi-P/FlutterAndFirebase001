@@ -4,16 +4,6 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
-/*  createState() => new _HeaderState();
-}
-class _HeaderState extends State<Header> {
-  int _sel_menu_num = 0;
-  void selectMenu() {
-    setState(() {
-      this._sel_menu_num = _sel_menu_num;
-    });
-  }
-*/
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -24,7 +14,7 @@ class _HeaderState extends State<Header> {
         width: 200.0,
         fit: BoxFit.contain,
       ),
-      /*
+      /*  //この部分あっても無くても見た目何も変わってないような…
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
