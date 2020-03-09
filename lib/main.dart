@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:task03fb/test_input_forms.dart';
 
+import 'another.dart';
 import 'contact.dart';
 import 'footer.dart';
 import 'header.dart';
 import 'login.dart';
 import 'right_menu.dart';
 import 'teachers.dart';
+import 'test_input_forms.dart';
 
 void main() {
   //debugPaintSizeEnabled = true;
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/login': (BuildContext context) => Login(),
         '/right_menu': (BuildContext context) => RightMenu(),
         '/teachers': (BuildContext context) => Teachers(),
+        '/another': (BuildContext context) => Another(),
         '/test_input_forms': (BuildContext context) => TestInputForm(),
       },
       title: 'task03 connect firestore',
